@@ -1,0 +1,1898 @@
+<!DOCTYPE html>
+<!-- saved from url=(0095)#hero -->
+<html lang="en" class="scroll-smooth"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VitalTrack — Track Your Health. Transform Your Life.</title>
+  <meta name="description" content="The all-in-one wellness platform with AI chatbot, doctor chat, biometric tracking, health goals, and more.">
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link href="./Health App_files/css2" rel="stylesheet">
+  <style>
+    /* =====================
+       CSS CUSTOM PROPERTIES
+    ===================== */
+    :root {
+      --bg:           #f8fafb;
+      --bg-card:      #ffffff;
+      --fg:           #0f172a;
+      --fg-muted:     #64748b;
+      --border:       #e2e8f0;
+      --primary:      #10b981;
+      --primary-dark: #059669;
+      --primary-light:#d1fae5;
+      --accent:       #06b6d4;
+      --accent-light: #cffafe;
+      --violet:       #8b5cf6;
+      --rose:         #f43f5e;
+      --amber:        #f59e0b;
+      --blue:         #3b82f6;
+      --indigo:       #6366f1;
+      --shadow-sm:    0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+      --shadow:       0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.04);
+      --shadow-lg:    0 10px 30px rgba(0,0,0,.10), 0 4px 8px rgba(0,0,0,.04);
+      --shadow-xl:    0 20px 50px rgba(0,0,0,.13);
+      --radius:       .75rem;
+      --radius-lg:    1.25rem;
+      --radius-xl:    1.75rem;
+      --transition:   .25s cubic-bezier(.4,0,.2,1);
+    }
+
+    .dark {
+      --bg:           #0f172a;
+      --bg-card:      #1e293b;
+      --fg:           #f1f5f9;
+      --fg-muted:     #94a3b8;
+      --border:       #334155;
+      --primary-light:#064e3b;
+      --accent-light: #164e63;
+      --shadow-sm:    0 1px 3px rgba(0,0,0,.3);
+      --shadow:       0 4px 12px rgba(0,0,0,.35);
+      --shadow-lg:    0 10px 30px rgba(0,0,0,.4);
+      --shadow-xl:    0 20px 50px rgba(0,0,0,.5);
+    }
+
+    /* =====================
+       RESET & BASE
+    ===================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background var(--transition), color var(--transition);
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+    ul { list-style: none; }
+
+    /* =====================
+       UTILITIES
+    ===================== */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+    .sr-only { position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0); }
+
+    .text-primary  { color: var(--primary); }
+    .text-muted    { color: var(--fg-muted); }
+    .text-violet   { color: var(--violet); }
+    .text-rose     { color: var(--rose); }
+    .text-amber    { color: var(--amber); }
+    .text-blue     { color: var(--blue); }
+    .text-accent   { color: var(--accent); }
+
+    .bg-card { background: var(--bg-card); }
+    .border   { border: 1px solid var(--border); }
+
+    .flex  { display: flex; }
+    .grid  { display: grid; }
+    .hidden{ display: none; }
+
+    /* =====================
+       BUTTONS
+    ===================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .75rem 1.5rem;
+      border-radius: var(--radius);
+      font-size: .9375rem;
+      font-weight: 600;
+      transition: all var(--transition);
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(16,185,129,.35);
+    }
+    .btn-primary:hover { background: var(--primary-dark); box-shadow: 0 6px 20px rgba(16,185,129,.45); transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--fg);
+      border: 1.5px solid var(--border);
+    }
+    .btn-outline:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-1px); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--fg-muted);
+    }
+    .btn-ghost:hover { color: var(--fg); background: rgba(0,0,0,.04); }
+    .dark .btn-ghost:hover { background: rgba(255,255,255,.06); }
+    .btn-white {
+      background: #fff;
+      color: var(--primary);
+      box-shadow: var(--shadow);
+    }
+    .btn-white:hover { background: #f0fdf4; transform: translateY(-1px); }
+    .btn-lg { padding: .875rem 2rem; font-size: 1rem; }
+
+    /* =====================
+       BADGE
+    ===================== */
+    .badge {
+      display: inline-block;
+      font-size: .6875rem;
+      font-weight: 700;
+      padding: .2rem .65rem;
+      border-radius: 999px;
+      background: var(--primary-light);
+      color: var(--primary);
+      border: 1px solid rgba(16,185,129,.25);
+      letter-spacing: .03em;
+    }
+
+    /* =====================
+       NAVBAR
+    ===================== */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.25rem 0;
+      transition: all var(--transition);
+    }
+    #navbar.scrolled {
+      padding: .75rem 0;
+      background: rgba(248,250,251,.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+    .dark #navbar.scrolled {
+      background: rgba(15,23,42,.85);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--fg);
+    }
+    .logo-icon {
+      width: 2.4rem; height: 2.4rem;
+      border-radius: .65rem;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 12px rgba(16,185,129,.3);
+    }
+    .logo-icon svg { width: 1.2rem; height: 1.2rem; color: #fff; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .nav-links a {
+      font-size: .9375rem;
+      font-weight: 500;
+      color: var(--fg-muted);
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--primary); }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+
+    /* Theme Toggle */
+    .theme-toggle {
+      width: 2.25rem; height: 2.25rem;
+      border-radius: .5rem;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--fg-muted);
+      transition: all var(--transition);
+    }
+    .theme-toggle:hover { background: rgba(0,0,0,.06); color: var(--fg); }
+    .dark .theme-toggle:hover { background: rgba(255,255,255,.08); }
+    .theme-toggle svg { width: 1.15rem; height: 1.15rem; }
+    .icon-sun { display: none; }
+    .icon-moon { display: block; }
+    .dark .icon-sun { display: block; }
+    .dark .icon-moon { display: none; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: .4rem;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px; height: 2px;
+      background: var(--fg);
+      border-radius: 2px;
+      transition: all var(--transition);
+    }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+    /* Mobile Nav */
+    #mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--bg);
+      z-index: 99;
+      padding-top: 5rem;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      transition: opacity var(--transition);
+    }
+    #mobile-nav.open { display: flex; }
+    #mobile-nav a {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--fg);
+      transition: color var(--transition);
+    }
+    #mobile-nav a:hover { color: var(--primary); }
+    .mobile-nav-cta { display: flex; flex-direction: column; gap: .75rem; width: 80%; max-width: 280px; margin-top: 1rem; }
+    .mobile-nav-cta .btn { justify-content: center; }
+
+    /* =====================
+       SECTIONS SHARED
+    ===================== */
+    section { padding: 6rem 0; }
+    .section-label {
+      font-size: .875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--primary);
+      margin-bottom: .75rem;
+    }
+    .section-title {
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--fg);
+      margin-bottom: 1rem;
+    }
+    .section-subtitle {
+      font-size: 1.0625rem;
+      color: var(--fg-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .section-header { text-align: center; margin-bottom: 4rem; }
+
+    /* =====================
+       HERO
+    ===================== */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 70% 30%, rgba(16,185,129,.13) 0%, transparent 65%),
+                  radial-gradient(ellipse 50% 40% at 20% 80%, rgba(6,182,212,.10) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .dark .hero-bg {
+      background: radial-gradient(ellipse 80% 60% at 70% 30%, rgba(16,185,129,.18) 0%, transparent 65%),
+                  radial-gradient(ellipse 50% 40% at 20% 80%, rgba(6,182,212,.14) 0%, transparent 60%);
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .35rem 1rem .35rem .6rem;
+      border-radius: 999px;
+      background: var(--primary-light);
+      color: var(--primary);
+      font-size: .8125rem;
+      font-weight: 600;
+      border: 1px solid rgba(16,185,129,.2);
+      margin-bottom: 1.5rem;
+    }
+    .hero-badge .dot {
+      width: .5rem; height: .5rem;
+      border-radius: 50%;
+      background: var(--primary);
+      position: relative;
+    }
+    .hero-badge .dot::after {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background: var(--primary);
+      opacity: .4;
+      animation: ping 1.5s ease-in-out infinite;
+    }
+    @keyframes ping { 0%,100%{transform:scale(1);opacity:.4} 50%{transform:scale(1.6);opacity:0} }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -.02em;
+      margin-bottom: 1.25rem;
+    }
+    .hero-gradient {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-desc {
+      font-size: 1.125rem;
+      color: var(--fg-muted);
+      max-width: 520px;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .hero-note {
+      font-size: .8125rem;
+      color: var(--fg-muted);
+      margin-top: 1rem;
+    }
+
+    /* Hero Mockup / Dashboard Card */
+    .hero-visual { position: relative; }
+    .hero-glow {
+      position: absolute;
+      inset: -20%;
+      background: radial-gradient(circle, rgba(16,185,129,.18) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .dashboard-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-xl);
+      position: relative;
+      z-index: 1;
+    }
+    .dash-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+    .dash-score-label { font-size: .8125rem; color: var(--fg-muted); font-weight: 500; }
+    .dash-score {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--fg);
+      line-height: 1;
+      margin-top: .25rem;
+    }
+    .dash-score span { font-size: 1rem; font-weight: 500; color: var(--primary); }
+    .dash-icon {
+      width: 3rem; height: 3rem;
+      border-radius: .75rem;
+      background: var(--primary-light);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .dash-icon svg { width: 1.4rem; height: 1.4rem; color: var(--primary); }
+
+    /* Sparkline */
+    .sparkline-wrap { width: 100%; height: 120px; margin-bottom: 1.25rem; }
+    canvas#sparkline { width: 100%; height: 100%; }
+
+    /* Metric Grid */
+    .metric-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .75rem;
+    }
+    .metric-tile {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: .875rem 1rem;
+      transition: background var(--transition);
+    }
+    .metric-tile-label {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .75rem;
+      font-weight: 600;
+      color: var(--fg-muted);
+      margin-bottom: .4rem;
+    }
+    .metric-tile-label svg { width: .875rem; height: .875rem; }
+    .metric-value {
+      font-size: 1.375rem;
+      font-weight: 800;
+      color: var(--fg);
+    }
+    .metric-value span { font-size: .8rem; font-weight: 400; color: var(--fg-muted); }
+    .metric-ai-text { font-size: .8125rem; font-weight: 600; color: var(--fg); }
+
+    /* Floating chips */
+    .float-chip {
+      position: absolute;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: .4rem .9rem;
+      font-size: .8125rem;
+      font-weight: 600;
+      color: var(--fg);
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      animation: float 3s ease-in-out infinite;
+    }
+    .float-chip:nth-child(2) { animation-delay: 1s; }
+    .float-chip:nth-child(3) { animation-delay: 2s; }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+    .chip-1 { top: -1.25rem; right: 2rem; }
+    .chip-2 { bottom: 1.5rem; left: -1.5rem; }
+
+
+    /* =====================
+       ABOUT US
+    ===================== */
+    .about-section {
+  padding: 80px 0;
+  background: linear-gradient(180deg, #0b1220, #0f1b2e);
+  color: #f8fbff;
+}
+
+.about-container {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #59c3ff, #7c4dff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.about-text {
+  color: #b8c6db;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.about-highlights {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 25px;
+}
+
+.highlight {
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.1);
+  font-size: 0.9rem;
+}
+
+ /* =====================
+       AUDIENCE SECTION
+    ===================== */
+.audience-section {
+  padding: 100px 0;
+  background: #0b1220;
+  color: #f8fbff;
+  text-align: center;
+}
+
+.audience-title {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, #59c3ff, #7c4dff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.audience-subtitle {
+  color: #b8c6db;
+  margin-bottom: 60px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.triangle-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.triangle {
+  position: relative;
+  width: 600px;
+  height: 400px;
+}
+
+.triangle-item {
+  position: absolute;
+  width: 230px;
+  padding: 22px;
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  transition: 0.3s ease;
+}
+
+.triangle-item:hover {
+  transform: translateY(-8px) scale(1.02);
+}
+
+.triangle-item.top:hover {
+  transform: translateX(-50%) translateY(-8px) scale(1.02);
+}
+
+/* TOP */
+.triangle-item.top {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* LEFT */
+.triangle-item.left {
+  bottom: 0;
+  left: 0;
+}
+
+/* RIGHT */
+.triangle-item.right {
+  bottom: 0;
+  right: 0;
+}
+
+/* TEXT */
+.triangle-item h3 {
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+}
+
+.triangle-item p {
+   font-size: 0.9rem;
+      color: var(--fg-muted);
+      max-width: 600px;
+      margin: 0 auto;
+}
+    /* =====================
+       STATS BAR
+    ===================== */
+    #stats {
+      padding: 3rem 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-card);
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+    .stat-num {
+      font-size: 2.25rem;
+      font-weight: 900;
+      color: var(--fg);
+      line-height: 1;
+      margin-bottom: .35rem;
+      counter-reset: none;
+    }
+    .stat-label {
+      font-size: .8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--fg-muted);
+    }
+
+    /* =====================
+       FEATURES
+    ===================== */
+    #features { background: var(--bg); }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      cursor: default;
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(16,185,129,.25);
+    }
+    .feature-card-badge {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+    }
+    .feature-icon-wrap {
+      width: 3.25rem; height: 3.25rem;
+      border-radius: .75rem;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+    .feature-icon-wrap svg { width: 1.4rem; height: 1.4rem; }
+    .feature-title {
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: var(--fg);
+      margin-bottom: .6rem;
+    }
+    .feature-desc {
+      font-size: .9375rem;
+      color: var(--fg-muted);
+      line-height: 1.65;
+    }
+
+    /* =====================
+       HOW IT WORKS
+    ===================== */
+    #how {
+      background: var(--bg-card);
+      position: relative;
+    }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+      position: relative;
+    }
+    .steps-line {
+      position: absolute;
+      top: 3.25rem;
+      left: calc(16.66% + 1.5rem);
+      right: calc(16.66% + 1.5rem);
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary-light), rgba(16,185,129,.4), var(--primary-light));
+    }
+    .step-item { text-align: center; position: relative; z-index: 1; }
+    .step-num {
+      width: 6.5rem; height: 6.5rem;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 3px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.25rem;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--primary);
+      box-shadow: var(--shadow);
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    .step-item:hover .step-num {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 6px var(--primary-light);
+    }
+    .step-title { font-size: 1.125rem; font-weight: 700; color: var(--fg); margin-bottom: .5rem; }
+    .step-desc  { font-size: .9375rem; color: var(--fg-muted); }
+
+    /* =====================
+       TESTIMONIALS
+    ===================== */
+    #testimonials { background: var(--bg); }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .testimonial-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .testimonial-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .stars { display: flex; gap: .2rem; margin-bottom: 1.25rem; }
+    .stars svg { width: 1.1rem; height: 1.1rem; fill: #f59e0b; color: #f59e0b; }
+    .testimonial-quote {
+      font-size: 1rem;
+      color: var(--fg);
+      line-height: 1.7;
+      font-style: italic;
+      margin-bottom: 1.5rem;
+    }
+    .testimonial-author { display: flex; align-items: center; gap: .75rem; }
+    .testimonial-avatar {
+      width: 2.75rem; height: 2.75rem;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--primary-light);
+    }
+    .testimonial-name { font-weight: 700; color: var(--fg); font-size: .9375rem; }
+    .testimonial-role { font-size: .8125rem; color: var(--fg-muted); }
+
+    /* =====================
+       PRICING
+    ===================== */
+    #pricing {
+      background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg) 100%);
+    }
+    .dark #pricing { background: linear-gradient(180deg, #1e293b 0%, var(--bg) 100%); }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      align-items: center;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .pricing-card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 2.25rem;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .pricing-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .pricing-card.popular {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+      transform: scale(1.04);
+      box-shadow: 0 20px 50px rgba(16,185,129,.35);
+      position: relative;
+    }
+    .pricing-card.popular:hover { transform: scale(1.04) translateY(-4px); }
+    .popular-label {
+      position: absolute;
+      top: -1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: #fff;
+      font-size: .75rem;
+      font-weight: 700;
+      padding: .3rem 1rem;
+      border-radius: 999px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .pricing-name { font-size: 1.1rem; font-weight: 700; margin-bottom: .75rem; }
+    .pricing-price {
+      font-size: 2.75rem;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: .25rem;
+    }
+    .pricing-price span { font-size: 1rem; font-weight: 400; opacity: .7; }
+    .pricing-desc { font-size: .875rem; opacity: .75; margin-bottom: 1.75rem; min-height: 2.6em; }
+    .pricing-divider { height: 1px; background: rgba(255,255,255,.2); margin: 0 0 1.5rem; }
+    .pricing-card:not(.popular) .pricing-divider { background: var(--border); }
+    .pricing-features { display: flex; flex-direction: column; gap: .75rem; margin-bottom: 2rem; }
+    .pricing-feature {
+      display: flex;
+      align-items: center;
+      gap: .65rem;
+      font-size: .9rem;
+    }
+    .pricing-feature svg { width: 1.1rem; height: 1.1rem; flex-shrink: 0; }
+    .pricing-card:not(.popular) .pricing-feature { color: var(--fg); }
+    .pricing-card:not(.popular) .pricing-feature svg { color: var(--primary); }
+    .pricing-card.popular .pricing-feature { color: rgba(255,255,255,.9); }
+    .pricing-card.popular .pricing-feature svg { color: var(--accent-light); }
+    .pricing-btn { width: 100%; justify-content: center; }
+
+    /* =====================
+       CTA BANNER
+    ===================== */
+    #cta {
+      padding: 6rem 0;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-blob {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,.08);
+      filter: blur(40px);
+    }
+    .cta-blob-1 { width: 400px;height:400px;top:-100px;right:-100px; }
+    .cta-blob-2 { width:350px;height:350px;bottom:-120px;left:-80px; }
+    .cta-inner { position: relative; z-index: 1; text-align: center; }
+    .cta-title  { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 900; color: #fff; margin-bottom: 1rem; }
+    .cta-desc   { font-size: 1.0625rem; color: rgba(255,255,255,.8); max-width: 560px; margin: 0 auto 2.5rem; }
+
+    /* =====================
+       FOOTER
+    ===================== */
+    footer {
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+      padding: 4rem 0 2rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+    .footer-brand p { font-size: .9rem; color: var(--fg-muted); margin-top: .75rem; max-width: 220px; line-height: 1.65; }
+    .footer-social { display: flex; gap: .75rem; margin-top: 1.25rem; }
+    .social-btn {
+      width: 2.25rem; height: 2.25rem;
+      border-radius: .5rem;
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--fg-muted);
+      transition: all var(--transition);
+    }
+    .social-btn:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+    .social-btn svg { width: 1rem; height: 1rem; }
+    .footer-col h4 { font-size: .875rem; font-weight: 700; color: var(--fg); margin-bottom: 1rem; }
+    .footer-col a { display: block; font-size: .875rem; color: var(--fg-muted); margin-bottom: .6rem; transition: color var(--transition); }
+    .footer-col a:hover { color: var(--primary); }
+    .footer-bottom {
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-bottom p { font-size: .8125rem; color: var(--fg-muted); }
+
+    /* =====================
+       SCROLL ANIMATIONS
+    ===================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+    .reveal-delay-4 { transition-delay: .4s; }
+    .reveal-delay-5 { transition-delay: .5s; }
+
+    /* =====================
+       RESPONSIVE
+    ===================== */
+    @media (max-width: 1024px) {
+      .features-grid  { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid    { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-actions .btn-ghost, .nav-actions .btn-outline { display: none; }
+      .hamburger { display: flex; }
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-desc  { margin: 0 auto 2rem; }
+      .hero-actions { justify-content: center; }
+      .hero-visual { display: none; }
+      .stats-grid  { grid-template-columns: repeat(2, 1fr); }
+      .features-grid     { grid-template-columns: 1fr; }
+      .steps-grid  { grid-template-columns: 1fr; }
+      .steps-line  { display: none; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .pricing-card.popular { transform: scale(1); }
+      .footer-grid  { grid-template-columns: 1fr; }
+      section { padding: 4rem 0; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title { font-size: 2.25rem; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ==================== NAVBAR ==================== -->
+  <header id="navbar">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#hero" class="nav-logo">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
+          </div>
+HealthTech        </a>
+
+        <nav class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#how">How It Works</a>
+          <a href="#testimonials">Testimonials</a>
+          <a href="#pricing">Pricing</a>
+        </nav>
+
+        <div class="nav-actions">
+          <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+            <!-- Sun icon -->
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <!-- Moon icon -->
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+          <a href="#pricing" class="btn btn-ghost" style="display:none;" id="loginBtn">Log In</a>
+          
+          <button class="hamburger" id="hamburger" aria-label="Open menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav Overlay -->
+  <nav id="mobile-nav" role="navigation" aria-label="Mobile navigation">
+    <a href="#features" class="mobile-link">Features</a>
+    <a href="#how" class="mobile-link">How It Works</a>
+    <a href="#testimonials" class="mobile-link">Testimonials</a>
+    <a href="#pricing" class="mobile-link">Pricing</a>
+   
+  </nav>
+
+  <!-- ==================== HERO ==================== -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="container">
+      <div class="hero-inner">
+
+        <!-- Left: Copy -->
+        <div class="hero-copy">
+          <div class="hero-badge">
+            <span class="dot"></span>
+            VitalTrack 2.0 is now live
+          </div>
+          <h1 class="hero-title">
+            Track Your Health.<br>
+            <span class="hero-gradient">Transform Your Life.</span>
+          </h1>
+          <p class="hero-desc">
+            The all-in-one wellness platform with AI chatbot, doctor chat, advanced biometrics, health goals, and more — giving you a complete picture of your health.
+          </p>
+          <div class="hero-actions">
+            
+            <a href="#features" class="btn btn-outline btn-lg">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              See Features
+            </a>
+          </div>
+         
+        </div>
+
+        <!-- Right: Dashboard Mockup -->
+        <div class="hero-visual">
+          <div class="hero-glow"></div>
+
+          <!-- Floating chips -->
+      
+
+          <div class="dashboard-card">
+            <div class="dash-header">
+              <div>
+                <div class="dash-score-label">Overall Health Score</div>
+                <div class="dash-score">90 <span>/ 100</span></div>
+              </div>
+              <div class="dash-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                </svg>
+              </div>
+            </div>
+
+            <div class="sparkline-wrap">
+              <canvas id="sparkline" width="617" height="150" style="width: 494.4px; height: 120px;"></canvas>
+            </div>
+
+            <div class="metric-grid">
+              <div class="metric-tile">
+                <div class="metric-tile-label">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#f43f5e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path>
+                  </svg>
+                  Blood Glucose
+                </div>
+                <div class="metric-value">96 <span>mg/dL</span></div>
+              </div>
+              <div class="metric-tile">
+                <div class="metric-tile-label">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                  </svg>
+                  Water Intake
+                </div>
+                <div class="metric-value">1.8 <span>L</span></div>
+              </div>
+              <div class="metric-tile">
+                <div class="metric-tile-label">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                  </svg>
+                  Heart Rate
+                </div>
+                <div class="metric-value">68 <span>bpm</span></div>
+              </div>
+              <div class="metric-tile">
+                <div class="metric-tile-label">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                  AI Insight
+                </div>
+                <div class="metric-ai-text">Great hydration today! 🎉</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+    <!-- ==================== ABOUT ==================== -->
+  <section id="about" class="about-section">
+  <div class="container about-container">
+    
+    <div class="about-content">
+      <h2 class="about-title">About HealthTech.co</h2>
+      
+      <p class="about-text">
+        HealthTech.co is a digital health management application designed to support individuals in monitoring, analysing, and improving their daily health and wellness. The system provides users with a centralized platform to record key health metrics, visualise trends through interactive dashboards, and gain insights into their physical wellbeing.
+      </p>
+
+      <p class="about-text">
+        The application integrates modern mobile development technologies with a secure backend infrastructure to ensure efficient data processing and reliable storage of user information. Through features such as health metric tracking, device integration simulation, and data visualisation tools, HealthTech.co aims to promote proactive health management and informed decision-making.
+      </p>
+
+      <div class="about-highlights">
+        <div class="highlight">📊 Smart Data Visualisation</div>
+        <div class="highlight">🔒 Secure Health Records</div>
+        <div class="highlight">📱 Modern App Experience</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+  
+
+ <!-- ==================== AUDIENCE ==================== -->
+  <section id="features">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Audience</div>
+        <h2 class="section-title">Who is HealthTech For?</h2>
+        <p class="section-subtitle">Designed for individuals who want to take control of their health through data, insights, and smart tracking</p>
+      </div>
+
+      <div class="triangle-wrapper">
+
+      <div class="triangle">
+
+        <div class="triangle-item top">
+          <h3>13yr and Above</h3>
+          <p>Suitable and accessible for users aged 13 and above looking to build healthy habits early.</p>
+        </div>
+
+        <div class="triangle-item left">
+          <h3>Health-Conscious Users</h3>
+          <p>Individuals who actively monitor their fitness, diet, and overall wellbeing.</p>
+        </div>
+
+        <div class="triangle-item right">
+          <h3>Tech-Savvy Individuals</h3>
+          <p>Users who prefer digital platforms for tracking and visualising health data.</p>
+        </div>
+
+      </div>
+
+    </div>
+      
+    </div>
+  </section>
+  <!-- ==================== STATS ==================== -->
+  <section id="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="reveal">
+          <div class="stat-num" data-count="50000" data-suffix="K+">0</div>
+          <div class="stat-label">Active Users</div>
+        </div>
+        <div class="reveal reveal-delay-1">
+          <div class="stat-num" data-count="1000000" data-suffix="M+">0</div>
+          <div class="stat-label">Workouts Logged</div>
+        </div>
+        <div class="reveal reveal-delay-2">
+          <div class="stat-num" data-count="49" data-suffix="" data-decimal="1">0</div>
+          <div class="stat-label">App Store Rating</div>
+        </div>
+        <div class="reveal reveal-delay-3">
+          <div class="stat-num" data-count="97" data-suffix="%">0</div>
+          <div class="stat-label">Satisfaction Rate</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FEATURES ==================== -->
+  <section id="features">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Features</div>
+        <h2 class="section-title">Everything You Need to Thrive</h2>
+        <p class="section-subtitle">HealthTech connects all the dots of your wellness journey, giving you a complete picture of your health in one beautiful app.</p>
+      </div>
+
+      <div class="features-grid">
+
+        <!-- 1: Chat System -->
+        <div class="feature-card reveal">
+          <span class="feature-card-badge"><span class="badge">Community</span></span>
+          <div class="feature-icon-wrap" style="background:rgba(16,185,129,.1);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+          </div>
+          <h3 class="feature-title">Integrated Chat System</h3>
+          <p class="feature-desc">Connect directly with admins, fellow users, and certified doctors — all in one secure, HIPAA-aware messaging hub.</p>
+        </div>
+
+        <!-- 2: Patient Search -->
+        <div class="feature-card reveal reveal-delay-1">
+          <span class="feature-card-badge"><span class="badge" style="background:rgba(139,92,246,.1);color:var(--violet);border-color:rgba(139,92,246,.2);">For Doctors</span></span>
+          <div class="feature-icon-wrap" style="background:rgba(139,92,246,.1);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </div>
+          <h3 class="feature-title">Doctor Patient Search</h3>
+          <p class="feature-desc">Doctors can instantly search and access their patients' complete health records, history, and real-time biometric data.</p>
+        </div>
+
+        <!-- 3: Biometrics -->
+        <div class="feature-card reveal reveal-delay-2">
+          <span class="feature-card-badge"><span class="badge" style="background:rgba(244,63,94,.1);color:var(--rose);border-color:rgba(244,63,94,.2);">New</span></span>
+          <div class="feature-icon-wrap" style="background:rgba(244,63,94,.1);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#f43f5e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path>
+            </svg>
+          </div>
+          <h3 class="feature-title">Advanced Biometrics</h3>
+          <p class="feature-desc">Monitor blood glucose, water intake, blood pressure, oxygen levels, and more — all from a single unified dashboard.</p>
+        </div>
+
+        <!-- 4: Dark/Light Mode -->
+       <!-- 4: Personalisation -->
+<div class="feature-card reveal reveal-delay-1">
+
+  <!-- Badge OUTSIDE icon -->
+  <span class="feature-card-badge">
+    <span class="badge" style="background:rgba(245,158,11,.1);color:#f59e0b;border-color:rgba(245,158,11,.2);">
+      Personalisation
+    </span>
+  </span>
+
+  <!-- Icon -->
+  <div class="feature-icon-wrap" style="background:rgba(245,158,11,.1);">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </div>
+
+  <!-- Title -->
+  <h3 class="feature-title">Dark &amp; Light Mode</h3>
+
+  <!-- Description -->
+  <p class="feature-desc">
+    Switch effortlessly between dark and light themes. Designed for comfort and clarity, 
+    allowing users to personalise their experience for day or night usage.
+  </p>
+
+</div>
+
+        <!-- 5: Health Goals -->
+        <div class="feature-card reveal reveal-delay-2">
+          <div class="feature-icon-wrap" style="background:rgba(16,185,129,.1);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle>
+            </svg>
+          </div>
+          <h3 class="feature-title">Smart Health Goals</h3>
+          <p class="feature-desc">Set personalized wellness targets for fitness, sleep, hydration, or nutrition. Track progress in real-time with milestone celebrations.</p>
+        </div>
+
+        <!-- 6: AI Chatbot -->
+        <div class="feature-card reveal reveal-delay-3">
+          <span class="feature-card-badge"><span class="badge" style="background:rgba(59,130,246,.1);color:var(--blue);border-color:rgba(59,130,246,.2);">AI Powered</span></span>
+          <div class="feature-icon-wrap" style="background:rgba(59,130,246,.1);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+          </div>
+          <h3 class="feature-title">AI Health Chatbot</h3>
+          <p class="feature-desc">Your 24/7 personal health assistant. Ask anything from symptom checks to nutrition advice — powered by cutting-edge AI.</p>
+        </div>
+
+         <!-- 7: Device Integration -->
+        <div class="feature-card reveal reveal-delay-1">
+
+  <span class="feature-card-badge">
+    <span class="badge" style="background:rgba(249,115,22,.1);color:#f97316;border-color:rgba(249,115,22,.2);">
+      Integration
+    </span>
+  </span>
+
+  <div class="feature-icon-wrap" style="background:rgba(249,115,22,.1);">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <!-- device icon -->
+      <rect x="6" y="2" width="12" height="20" rx="3"></rect>
+      <circle cx="12" cy="18" r="1"></circle>
+
+      <!-- connection lines -->
+      <path d="M12 8h6"></path>
+      <path d="M12 12h6"></path>
+    </svg>
+  </div>
+
+  <h3 class="feature-title">Device Integration</h3>
+
+  <p class="feature-desc">
+    Seamlessly connect with platforms like Apple Health, Fitbit, and MyFitnessPal. 
+    Sync your health data across devices and centralise your wellness insights 
+    in one unified dashboard.
+  </p>
+
+ 
+
+</div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== HOW IT WORKS ==================== -->
+  <section id="how">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">How It Works</div>
+        <h2 class="section-title">Up and running in minutes</h2>
+        <p class="section-subtitle">Three simple steps to transform your daily routine into lifelong healthy habits.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="steps-line"></div>
+
+        <div class="step-item reveal">
+          <div class="step-num">01</div>
+          <h3 class="step-title">Set Your Goals</h3>
+          <p class="step-desc">Choose what matters to you — Weight Loss, Muscle Gain, Maintain Weight, Improve Fitness. Personalize your experience from day one.</p>
+        </div>
+        <div class="step-item reveal reveal-delay-2">
+          <div class="step-num">02</div>
+          <h3 class="step-title">Track Daily</h3>
+          <p class="step-desc">Log activities, calories, biometrics, and chat with doctors, admins and other users in seconds with our intuitive, distraction-free interface.</p>
+        </div>
+        <div class="step-item reveal reveal-delay-4">
+          <div class="step-num">03</div>
+          <h3 class="step-title">See Results</h3>
+          <p class="step-desc">Watch your progress unfold with beautiful charts and graphs with AI-driven insights that help you make smarter health decisions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TESTIMONIALS ==================== -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Testimonials</div>
+        <h2 class="section-title">Loved by thousands</h2>
+        <p class="section-subtitle">Don't just take our word for it. Here's what our community has to say.</p>
+      </div>
+
+      <div class="testimonials-grid">
+
+        <div class="testimonial-card reveal">
+          <div class="stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          </div>
+          <p class="testimonial-quote">"VitalTrack completely changed how I train. The AI chatbot even helped me understand my glucose spikes after workouts. Incredible app."</p>
+          <div class="testimonial-author">
+            <img src="./Health App_files/photo-1438761681033-6461ffad8d80" alt="Sarah Jenkins" class="testimonial-avatar">
+            <div>
+              <div class="testimonial-name">Sarah Jenkins</div>
+              <div class="testimonial-role">Marathon Runner</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal reveal-delay-2">
+          <div class="stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          </div>
+          <p class="testimonial-quote">"The doctor chat feature is a game changer. I messaged my physician directly through the app and got results reviewed same day."</p>
+          <div class="testimonial-author">
+            <img src="./Health App_files/photo-1472099645785-5658abf4ff4e" alt="Michael Chen" class="testimonial-avatar">
+            <div>
+              <div class="testimonial-name">Michael Chen</div>
+              <div class="testimonial-role">Busy Professional</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal reveal-delay-4">
+          <div class="stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          </div>
+          <p class="testimonial-quote">"I recommend this to all my students. The holistic approach to sleep, activity, and mindfulness is unmatched. Dark mode is perfect for evening use."</p>
+          <div class="testimonial-author">
+            <img src="./Health App_files/photo-1534528741775-53994a69daeb" alt="Emma Roberts" class="testimonial-avatar">
+            <div>
+              <div class="testimonial-name">Emma Roberts</div>
+              <div class="testimonial-role">Yoga Instructor</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PRICING ==================== -->
+  <section id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Pricing</div>
+        <h2 class="section-title">Simple, transparent pricing</h2>
+        <p class="section-subtitle">Start for free, upgrade when you need more power.</p>
+      </div>
+
+      <div class="pricing-grid">
+
+        <!-- Basic -->
+        <div class="pricing-card reveal">
+          <div class="pricing-name">Basic</div>
+          <div class="pricing-price">$0 <span>/mo</span></div>
+          <div class="pricing-desc">Essential tracking to get your journey started.</div>
+          <div class="pricing-divider"></div>
+          <div class="pricing-features">
+            <div class="pricing-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Basic biometric tracking
+            </div>
+            <div class="pricing-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Water &amp; glucose logging
+            </div>
+            <div class="pricing-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Community chat access
+            </div>
+            <div class="pricing-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Health goal setting
+            </div>
+            <div class="pricing-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Light &amp; dark mode
+            </div>
+          </div>
+          <a href="#" class="btn btn-outline pricing-btn">Get Started Free</a>
+        </div>
+
+        <!-- Pro (Popular) -->
+        <div class="pricing-card popular reveal reveal-delay-2">
+          <div class="popular-label">Most Popular</div>
+          <div class="pricing-name">Pro</div>
+          <div class="pricing-price">$9.99 <span>/mo</span></div>
+          <div class="pricing-desc">Advanced analytics for serious health optimizers.</div>
+          <div class="pricing-divider"></div>
+          <div class="pricing-features">
+            <div class="pricing-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Everything in Basic
+            </div>
+            <div class="pricing-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              AI health chatbot (unlimited)
+            </div>
+            <div class="pricing-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Doctor-patient messaging
+            </div>
+            <div class="pricing-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Advanced biometric analytics
+            </div>
+            <div class="pricing-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Doctor patient search
+            </div>
+            <div class="pricing-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Priority support
+            </div>
+          </div>
+          <a href="#" class="btn btn-white pricing-btn">Start 14-Day Free Trial</a>
+        </div>
+
+        <!-- Elite -->
+        <div class="pricing-card reveal reveal-delay-4">
+          <div class="pricing-name">Elite</div>
+          <div class="pricing-price">$19.99 <span>/mo</span></div>
+          <div class="pricing-desc">Personalized coaching and deep integrations.</div>
+          <div class="pricing-divider"></div>
+          <div class="pricing-features">
+            <div class="pricing-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Everything in Pro
+            </div>
+            <div class="pricing-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Dedicated doctor concierge
+            </div>
+            <div class="pricing-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Full admin chat access
+            </div>
+            <div class="pricing-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Custom biometric thresholds
+            </div>
+            <div class="pricing-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Wearable device sync
+            </div>
+            <div class="pricing-feature">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              24/7 dedicated support
+            </div>
+          </div>
+          <a href="#" class="btn btn-outline pricing-btn">Upgrade to Elite</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CTA BANNER ==================== -->
+  <section id="cta">
+    <div class="cta-blob cta-blob-1"></div>
+    <div class="cta-blob cta-blob-2"></div>
+    <div class="container cta-inner">
+      <h2 class="cta-title reveal">Ready to Start Your Health Journey?</h2>
+      <p class="cta-desc reveal reveal-delay-1">Join over 50,000 people already using VitalTrack to live healthier, happier lives. It's free to start.</p>
+      <div class="reveal reveal-delay-2" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="#pricing" class="btn btn-white btn-lg">Get Started Free</a>
+        <a href="#features" class="btn btn-lg" style="background:rgba(255,255,255,.15);color:#fff;border:1.5px solid rgba(255,255,255,.4);">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <!--<footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#hero" class="nav-logo">
+            <div class="logo-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+            </div>
+            VitalTrack
+          </a>
+          <p>The all-in-one wellness platform helping you build better habits and unlock your healthiest self.</p>
+          <div class="footer-social">
+            <a href="#" class="social-btn" aria-label="Twitter">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="#features">Features</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#how">How It Works</a>
+          <a href="#">Changelog</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#">About</a>
+          <a href="#">Blog</a>
+          <a href="#">Careers</a>
+          <a href="#">Press</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Support</h4>
+          <a href="#">Help Center</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 VitalTrack. All rights reserved.</p>
+        <p>Made with ❤️ for a healthier world</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <script>
+    'use strict';
+
+    /* =========================================================
+       THEME TOGGLE
+    ========================================================= */
+    const html     = document.documentElement;
+    const themeBtn = document.getElementById('themeToggle');
+
+    // Restore saved preference immediately (before paint)
+    try {
+      if (localStorage.getItem('vt-theme') === 'dark') html.classList.add('dark');
+    } catch(e) {}
+
+    themeBtn.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      try { localStorage.setItem('vt-theme', html.classList.contains('dark') ? 'dark' : 'light'); } catch(e) {}
+      setTimeout(drawSparkline, 60); // redraw chart with new theme colours
+    });
+
+    /* =========================================================
+       NAVBAR — shrink + show Log-In on scroll
+    ========================================================= */
+    const navbar   = document.getElementById('navbar');
+    const loginBtn = document.getElementById('loginBtn');
+
+    function onScroll() {
+      if (window.scrollY > 30) {
+        navbar.classList.add('scrolled');
+        loginBtn.style.display = 'inline-flex';
+      } else {
+        navbar.classList.remove('scrolled');
+        loginBtn.style.display = 'none';
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll(); // run once on load
+
+    /* =========================================================
+       SMOOTH SCROLL — all anchor <a> links
+    ========================================================= */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const href = a.getAttribute('href');
+        if (href === '#') return;
+        const target = document.querySelector(href);
+        if (!target) return;
+        e.preventDefault();
+        closeMobileNav();
+        const navH = navbar.offsetHeight || 72;
+        const top  = target.getBoundingClientRect().top + window.scrollY - navH - 16;
+        window.scrollTo({ top, behavior: 'smooth' });
+      });
+    });
+
+    /* =========================================================
+       HAMBURGER / MOBILE NAV
+    ========================================================= */
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
+
+    hamburger.addEventListener('click', () => {
+      mobileNav.classList.contains('open') ? closeMobileNav() : openMobileNav();
+    });
+
+    function openMobileNav() {
+      mobileNav.classList.add('open');
+      hamburger.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMobileNav() {
+      mobileNav.classList.remove('open');
+      hamburger.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.mobile-link').forEach(l =>
+      l.addEventListener('click', closeMobileNav)
+    );
+
+    /* =========================================================
+       SCROLL REVEAL
+       Uses IntersectionObserver AND checks on page-load so
+       elements already in view instantly appear.
+    ========================================================= */
+    const reveals = Array.from(document.querySelectorAll('.reveal'));
+
+    function isInViewport(el) {
+      const r = el.getBoundingClientRect();
+      return r.top < (window.innerHeight || 768) * 0.92 && r.bottom > 0;
+    }
+
+    function revealEl(el) {
+      el.classList.add('visible');
+    }
+
+    // IntersectionObserver for elements entered while scrolling
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          revealEl(entry.target);
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    reveals.forEach(el => {
+      if (isInViewport(el)) {
+        // Already visible on load — show with a tiny stagger so it feels natural
+        const delay = parseFloat(getComputedStyle(el).transitionDelay) * 1000 || 0;
+        setTimeout(() => revealEl(el), 80 + delay);
+      } else {
+        revealObserver.observe(el);
+      }
+    });
+
+    /* =========================================================
+       COUNT-UP ANIMATION
+       Triggers immediately if stat is already visible on load.
+    ========================================================= */
+    const statNums = Array.from(document.querySelectorAll('[data-count]'));
+    const animated  = new Set();
+
+    function runCountUp(el) {
+      if (animated.has(el)) return;
+      animated.add(el);
+
+      const target    = parseInt(el.dataset.count, 10);
+      const suffix    = el.dataset.suffix || '';
+      const isDecimal = el.dataset.decimal === '1';
+      const isMillion = target >= 1000000;
+      const isThousand= target >= 1000 && !isMillion;
+      const duration  = 1800;
+      const startTime = performance.now();
+
+      function format(value) {
+        if (isMillion)  return (value / 1000000).toFixed(0) + suffix;
+        if (isThousand) return (value / 1000).toFixed(0)    + suffix;
+        if (isDecimal)  return (value / 10).toFixed(1)      + suffix;
+        return Math.round(value) + suffix;
+      }
+
+      function tick(now) {
+        const elapsed  = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const ease     = 1 - Math.pow(1 - progress, 3); // cubic ease-out
+        el.textContent = format(target * ease);
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    const countObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          runCountUp(entry.target);
+          countObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    statNums.forEach(el => {
+      if (isInViewport(el)) runCountUp(el);
+      else countObserver.observe(el);
+    });
+
+    /* =========================================================
+       SPARKLINE CANVAS
+       Retries with a fallback width so it always renders even
+       when getBoundingClientRect returns 0 (e.g. hidden iframes).
+    ========================================================= */
+    function drawSparkline() {
+      const canvas = document.getElementById('sparkline');
+      if (!canvas) return;
+
+      const ctx  = canvas.getContext('2d');
+      const dpr  = window.devicePixelRatio || 1;
+      let rect   = canvas.parentElement.getBoundingClientRect();
+
+      // Fallback: if parent has no layout yet, use sensible defaults
+      const W = rect.width  > 10 ? rect.width  : 380;
+      const H = rect.height > 10 ? rect.height : 120;
+
+      canvas.width  = W * dpr;
+      canvas.height = H * dpr;
+      canvas.style.width  = W + 'px';
+      canvas.style.height = H + 'px';
+      ctx.scale(dpr, dpr);
+      ctx.clearRect(0, 0, W, H);
+
+      const data   = [65, 72, 68, 85, 82, 95, 90];
+      const days   = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+      const minV   = 50, maxV = 100;
+      const padX   = 18, padY = 12;
+      const chartH = H - padY * 2 - 20;
+
+      const xStep = (W - padX * 2) / (data.length - 1);
+      const toY   = v => padY + (1 - (v - minV) / (maxV - minV)) * chartH;
+      const pts   = data.map((v, i) => ({ x: padX + i * xStep, y: toY(v) }));
+
+      const isDark = html.classList.contains('dark');
+
+      // Gradient area fill
+      const grad = ctx.createLinearGradient(0, 0, 0, H);
+      grad.addColorStop(0, isDark ? 'rgba(16,185,129,.4)' : 'rgba(16,185,129,.22)');
+      grad.addColorStop(1, 'rgba(16,185,129,0)');
+
+      ctx.beginPath();
+      ctx.moveTo(pts[0].x, pts[0].y);
+      for (let i = 1; i < pts.length; i++) {
+        const cx = (pts[i-1].x + pts[i].x) / 2;
+        ctx.bezierCurveTo(cx, pts[i-1].y, cx, pts[i].y, pts[i].x, pts[i].y);
+      }
+      ctx.lineTo(pts[pts.length-1].x, H - 20);
+      ctx.lineTo(pts[0].x, H - 20);
+      ctx.closePath();
+      ctx.fillStyle = grad;
+      ctx.fill();
+
+      // Smooth line
+      ctx.beginPath();
+      ctx.moveTo(pts[0].x, pts[0].y);
+      for (let i = 1; i < pts.length; i++) {
+        const cx = (pts[i-1].x + pts[i].x) / 2;
+        ctx.bezierCurveTo(cx, pts[i-1].y, cx, pts[i].y, pts[i].x, pts[i].y);
+      }
+      ctx.strokeStyle = '#10b981';
+      ctx.lineWidth   = 2.5;
+      ctx.lineJoin    = 'round';
+      ctx.stroke();
+
+      // Data-point dots
+      pts.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
+        ctx.fillStyle   = '#10b981';
+        ctx.fill();
+        ctx.strokeStyle = isDark ? '#1e293b' : '#ffffff';
+        ctx.lineWidth   = 2;
+        ctx.stroke();
+      });
+
+      // Day-of-week labels
+      ctx.font      = '500 11px Inter, system-ui, sans-serif';
+      ctx.fillStyle = isDark ? 'rgba(148,163,184,.75)' : 'rgba(100,116,139,.75)';
+      ctx.textAlign = 'center';
+      days.forEach((d, i) => ctx.fillText(d, padX + i * xStep, H - 4));
+    }
+
+    // Draw on load — with two RAF passes to ensure layout is ready
+    function scheduleSparkline() {
+      requestAnimationFrame(() => requestAnimationFrame(drawSparkline));
+      // Fallback in case the first draw found 0-size parent
+      setTimeout(drawSparkline, 200);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', scheduleSparkline);
+    } else {
+      scheduleSparkline();
+    }
+    window.addEventListener('load',   () => setTimeout(drawSparkline, 50));
+    window.addEventListener('resize', drawSparkline, { passive: true });
+
+  </script>
+</body></html>
