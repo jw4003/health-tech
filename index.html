@@ -563,13 +563,13 @@
 
 .triangle {
   position: relative;
-  width: 600px;
+  width: 700px;
   height: 400px;
 }
 
 .triangle-item {
   position: absolute;
-  width: 230px;
+  width: 250px;
   padding: 22px;
   border-radius: 16px;
   background: #ffffff;
@@ -695,6 +695,38 @@
       line-height: 1.65;
     }
 
+  .feature-image {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.feature-image img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.chat-preview-toggle {
+  display: none;
+  width: 100%;
+  margin-top: 1rem;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: #f8fafb;
+  color: var(--fg);
+  font-size: .95rem;
+  font-weight: 600;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.toggle-arrow {
+  transition: transform .25s ease;
+}
+
     /* =====================
        HOW IT WORKS
     ===================== */
@@ -740,110 +772,7 @@
     /* =====================
        TESTIMONIALS
     ===================== */
-    #testimonials { background: var(--bg); }
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-    .testimonial-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 2rem;
-      transition: transform var(--transition), box-shadow var(--transition);
-    }
-    .testimonial-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-    .stars { display: flex; gap: .2rem; margin-bottom: 1.25rem; }
-    .stars svg { width: 1.1rem; height: 1.1rem; fill: #f59e0b; color: #f59e0b; }
-    .testimonial-quote {
-      font-size: 1rem;
-      color: var(--fg);
-      line-height: 1.7;
-      font-style: italic;
-      margin-bottom: 1.5rem;
-    }
-    .testimonial-author { display: flex; align-items: center; gap: .75rem; }
-    .testimonial-avatar {
-      width: 2.75rem; height: 2.75rem;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid var(--primary-light);
-    }
-    .testimonial-name { font-weight: 700; color: var(--fg); font-size: .9375rem; }
-    .testimonial-role { font-size: .8125rem; color: var(--fg-muted); }
-
-    /* =====================
-       PRICING
-    ===================== */
-    #pricing {
-      background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg) 100%);
-    }
-    .dark #pricing { background: linear-gradient(180deg, #1e293b 0%, var(--bg) 100%); }
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      align-items: center;
-      max-width: 960px;
-      margin: 0 auto;
-    }
-    .pricing-card {
-      background: var(--bg-card);
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius-xl);
-      padding: 2.25rem;
-      transition: transform var(--transition), box-shadow var(--transition);
-    }
-    .pricing-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-    .pricing-card.popular {
-      background: var(--primary);
-      border-color: var(--primary);
-      color: #fff;
-      transform: scale(1.04);
-      box-shadow: 0 20px 50px rgba(16,185,129,.35);
-      position: relative;
-    }
-    .pricing-card.popular:hover { transform: scale(1.04) translateY(-4px); }
-    .popular-label {
-      position: absolute;
-      top: -1rem;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--accent);
-      color: #fff;
-      font-size: .75rem;
-      font-weight: 700;
-      padding: .3rem 1rem;
-      border-radius: 999px;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-    }
-    .pricing-name { font-size: 1.1rem; font-weight: 700; margin-bottom: .75rem; }
-    .pricing-price {
-      font-size: 2.75rem;
-      font-weight: 900;
-      line-height: 1;
-      margin-bottom: .25rem;
-    }
-    .pricing-price span { font-size: 1rem; font-weight: 400; opacity: .7; }
-    .pricing-desc { font-size: .875rem; opacity: .75; margin-bottom: 1.75rem; min-height: 2.6em; }
-    .pricing-divider { height: 1px; background: rgba(255,255,255,.2); margin: 0 0 1.5rem; }
-    .pricing-card:not(.popular) .pricing-divider { background: var(--border); }
-    .pricing-features { display: flex; flex-direction: column; gap: .75rem; margin-bottom: 2rem; }
-    .pricing-feature {
-      display: flex;
-      align-items: center;
-      gap: .65rem;
-      font-size: .9rem;
-    }
-    .pricing-feature svg { width: 1.1rem; height: 1.1rem; flex-shrink: 0; }
-    .pricing-card:not(.popular) .pricing-feature { color: var(--fg); }
-    .pricing-card:not(.popular) .pricing-feature svg { color: var(--primary); }
-    .pricing-card.popular .pricing-feature { color: rgba(255,255,255,.9); }
-    .pricing-card.popular .pricing-feature svg { color: var(--accent-light); }
-    .pricing-btn { width: 100%; justify-content: center; }
-
+   
     /* =====================
        CTA BANNER
     ===================== */
@@ -923,6 +852,245 @@
     .reveal-delay-4 { transition-delay: .4s; }
     .reveal-delay-5 { transition-delay: .5s; }
 
+    .compact-dashboard {
+  transform: scale(0.8);
+  transform-origin: center middle;
+}
+
+.mockup-header {
+  margin-bottom: .85rem;
+}
+
+.mockup-title {
+  font-size: .95rem;
+  color: var(--fg-muted);
+  font-weight: 500;
+}
+
+.mockup-top-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: .75rem;
+  margin-bottom: 1rem;
+}
+
+.mini-stat-card {
+  background: #edf7ee;
+  border-radius: .9rem;
+  padding: .85rem .8rem;
+  min-height: 88px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dark .mini-stat-card {
+  background: rgba(16,185,129,.12);
+}
+
+.mini-label {
+  font-size: .72rem;
+  color: var(--fg-muted);
+  margin-bottom: .3rem;
+  display: block;
+}
+
+.mini-stat-card strong {
+  font-size: .95rem;
+  line-height: 1.35;
+  color: var(--fg);
+}
+
+.compact-insight {
+  padding: 1rem;
+  border-radius: 1.1rem;
+  margin-bottom: .85rem;
+  box-shadow: 0 6px 18px rgba(15,23,42,.05);
+}
+
+.insight-card-top h4 {
+  font-size: 1rem;
+}
+
+.trend-badge {
+  background: #ffd9dd;
+  color: #7f1d1d;
+  font-size: .78rem;
+  font-weight: 700;
+  padding: .22rem .55rem;
+  border-radius: 999px;
+}
+
+.insight-main-stat {
+  text-align: center;
+  margin-bottom: .8rem;
+}
+
+.big-number {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--fg);
+  margin-bottom: .25rem;
+}
+
+.big-subtext {
+  font-size: .82rem;
+  color: var(--fg-muted);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  border-radius: 999px;
+  background: #d9d9d9;
+  overflow: hidden;
+  margin-bottom: .85rem;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: #46a546;
+}
+
+.compact-chart {
+  height: 120px;
+  border-top: 1px solid rgba(100,116,139,.12);
+  border-bottom: 1px solid rgba(100,116,139,.12);
+  margin-bottom: .85rem;
+  padding: .5rem 0;
+}
+
+.heart-line {
+  width: 100%;
+  height: 100%;
+}
+
+.heart-line path {
+  fill: none;
+  stroke: #2f95f5;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.insight-metrics-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: .5rem;
+  align-items: end;
+}
+
+.insight-metrics-row div {
+  display: flex;
+  flex-direction: column;
+}
+
+.insight-metrics-row div:nth-child(2) {
+  text-align: center;
+  align-items: center;
+}
+
+.insight-metrics-row div:last-child {
+  text-align: right;
+  align-items: flex-end;
+}
+
+.insight-metrics-row strong {
+  font-size: .95rem;
+  color: var(--fg);
+}
+
+.insight-metrics-row span {
+  font-size: .75rem;
+  color: var(--fg-muted);
+}
+
+.health-tiles-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: .75rem;
+  margin-top: .35rem;
+}
+
+.health-tile {
+  min-height: 120px;
+  border-radius: 1.1rem;
+  padding: .9rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.tile-green  { background: #edf7ef; }
+.tile-pink   { background: #faeaea; }
+.tile-beige  { background: #f6eee1; }
+.tile-purple { background: #f1e8f7; }
+
+.tile-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.7);
+  color: #888;
+  font-size: 1rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tile-value {
+  font-size: 1.3rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #111827;
+  margin-bottom: .2rem;
+}
+
+.tile-label {
+  font-size: .9rem;
+  color: #6b7280;
+}
+
+@media (max-width: 1024px) {
+  .compact-dashboard {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .mockup-top-cards,
+  .health-tiles-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .compact-chart {
+    height: 100px;
+  }
+
+  .insight-metrics-row {
+    grid-template-columns: 1fr;
+  }
+
+  .insight-metrics-row div,
+  .insight-metrics-row div:nth-child(2),
+  .insight-metrics-row div:last-child {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .health-tile {
+    min-height: 110px;
+  }
+}
+    
     /* =====================
        RESPONSIVE
     ===================== */
@@ -947,7 +1115,25 @@
       .pricing-card.popular { transform: scale(1); }
       .footer-grid  { grid-template-columns: 1fr; }
       section { padding: 4rem 0; }
-    }
+      
+       .triangle-item {
+    position: static; /* VERY IMPORTANT */
+    width: 100%;
+    transform: none !important;
+    margin: 1rem;
+    
+  }
+  
+
+  
+
+  
+  
+}
+
+  
+
+    
 
     @media (max-width: 480px) {
       .hero-title { font-size: 2.25rem; }
@@ -965,19 +1151,29 @@
     <div class="container">
       <div class="nav-inner">
         <a href="#hero" class="nav-logo">
-          <div class="logo-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-            </svg>
-          </div>
+          
+            <svg width="44" height="44" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="healthGradient" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22C55E"/>
+      <stop offset="1" stop-color="#16A34A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="64" height="64" rx="14" fill="url(#healthGradient)"/>
+
+  <!-- Shield -->
+  <path d="M32 14L44 18V29C44 38 38.3 45.2 32 48C25.7 45.2 20 38 20 29V18L32 14Z" fill="white"/>
+
+  <!-- Cross -->
+  <rect x="29" y="24" width="6" height="16" rx="2" fill="#16A34A"/>
+  <rect x="24" y="29" width="16" height="6" rx="2" fill="#16A34A"/>
+</svg>
+          
 HealthTech        </a>
 
-        <nav class="nav-links">
-          <a href="#features">Features</a>
-          <a href="#how">How It Works</a>
-          <a href="#testimonials">Testimonials</a>
-          <a href="#pricing">Pricing</a>
-        </nav>
+       
 
         <div class="nav-actions">
           <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
@@ -988,14 +1184,11 @@ HealthTech        </a>
               <line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line>
               <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
             </svg>
-            <!-- Moon icon -->
-            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
+           
           </button>
-          <a href="#pricing" class="btn btn-ghost" style="display:none;" id="loginBtn">Log In</a>
+          <a href="#pricing" class="btn btn-ghost" style="display:none;" id="loginBtn"></a>
           
-          <button class="hamburger" id="hamburger" aria-label="Open menu">
+          <button class="" id="hamburger" aria-label="Close menu">
             <span></span><span></span><span></span>
           </button>
         </div>
@@ -1004,13 +1197,7 @@ HealthTech        </a>
   </header>
 
   <!-- Mobile Nav Overlay -->
-  <nav id="mobile-nav" role="navigation" aria-label="Mobile navigation">
-    <a href="#features" class="mobile-link">Features</a>
-    <a href="#how" class="mobile-link">How It Works</a>
-    <a href="#testimonials" class="mobile-link">Testimonials</a>
-    <a href="#pricing" class="mobile-link">Pricing</a>
-   
-  </nav>
+  
 
   <!-- ==================== HERO ==================== -->
   <section id="hero">
@@ -1022,7 +1209,7 @@ HealthTech        </a>
         <div class="hero-copy">
           <div class="hero-badge">
             <span class="dot"></span>
-            VitalTrack 2.0 is now live
+            HealthTech is now live
           </div>
           <h1 class="hero-title">
             Track Your Health.<br>
@@ -1047,63 +1234,105 @@ HealthTech        </a>
 
           <!-- Floating chips -->
       
+         <div class="dashboard-card compact-dashboard">
+  <div class="mockup-header">
+    <p class="mockup-title">Your health data overview and analysis – All users</p>
+  </div>
 
-          <div class="dashboard-card">
-            <div class="dash-header">
-              <div>
-                <div class="dash-score-label">Overall Health Score</div>
-                <div class="dash-score">90 <span>/ 100</span></div>
-              </div>
-              <div class="dash-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                </svg>
-              </div>
-            </div>
+  <!-- report details -->
+  <div class="mockup-top-cards">
+    <div class="mini-stat-card">
+      <span class="mini-label">Report Period</span>
+      <strong>20 Mar 2026 -<br>26 Mar 2026</strong>
+    </div>
 
-            <div class="sparkline-wrap">
-              <canvas id="sparkline" width="617" height="150" style="width: 494.4px; height: 120px;"></canvas>
-            </div>
+    <div class="mini-stat-card">
+      <span class="mini-label">Generated On</span>
+      <strong>26 Mar 2026</strong>
+    </div>
 
-            <div class="metric-grid">
-              <div class="metric-tile">
-                <div class="metric-tile-label">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="#f43f5e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path>
-                  </svg>
-                  Blood Glucose
-                </div>
-                <div class="metric-value">96 <span>mg/dL</span></div>
-              </div>
-              <div class="metric-tile">
-                <div class="metric-tile-label">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
-                  </svg>
-                  Water Intake
-                </div>
-                <div class="metric-value">1.8 <span>L</span></div>
-              </div>
-              <div class="metric-tile">
-                <div class="metric-tile-label">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                  </svg>
-                  Heart Rate
-                </div>
-                <div class="metric-value">68 <span>bpm</span></div>
-              </div>
-              <div class="metric-tile">
-                <div class="metric-tile-label">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                  </svg>
-                  AI Insight
-                </div>
-                <div class="metric-ai-text">Great hydration today! 🎉</div>
-              </div>
-            </div>
-          </div>
+    <div class="mini-stat-card">
+      <span class="mini-label">Goals Achieved</span>
+      <strong>0/7 Days</strong>
+    </div>
+  </div>
+
+  <!-- graphs / insights -->
+  
+
+  <div class="insight-card compact-insight">
+    <div class="insight-card-top">
+      <h4>Heart Rate</h4>
+      <span class="trend-badge">-0.9%</span>
+    </div>
+
+    <div class="insight-main-stat">
+      <div class="big-number">80 BPM</div>
+      <div class="big-subtext">Average heart rate</div>
+    </div>
+
+    <div class="heart-chart-area compact-chart">
+      <svg viewBox="0 0 800 160" preserveAspectRatio="none" class="heart-line">
+        <path d="M0,100 
+                 C20,130 30,85 50,105
+                 C70,120 85,60 105,110
+                 C125,145 145,45 165,100
+                 C185,125 205,70 225,112
+                 C245,135 265,55 285,102
+                 C305,125 325,88 345,115
+                 C365,145 385,58 405,100
+                 C425,128 445,68 465,98
+                 C485,122 505,82 525,110
+                 C545,130 565,58 585,95
+                 C605,122 625,75 645,118
+                 C665,140 685,60 705,100
+                 C725,120 745,68 765,92
+                 C785,108 795,130 800,140" />
+      </svg>
+    </div>
+
+    <div class="insight-metrics-row">
+      <div>
+        <strong>80 BPM</strong>
+        <span>Average</span>
+      </div>
+      <div></div>
+      <div>
+        <strong>60–100</strong>
+        <span>Normal Range</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- health tiles -->
+  <div class="health-tiles-grid compact-health-tiles">
+    <div class="health-tile tile-green">
+      <button class="tile-close" aria-label="Remove">×</button>
+      <div class="tile-value">745 steps</div>
+      <div class="tile-label">Steps</div>
+    </div>
+
+    <div class="health-tile tile-pink">
+      <button class="tile-close" aria-label="Remove">×</button>
+      <div class="tile-value">79 bpm</div>
+      <div class="tile-label">Heart Rate</div>
+    </div>
+
+    <div class="health-tile tile-beige">
+      <button class="tile-close" aria-label="Remove">×</button>
+      <div class="tile-value">191 kcal</div>
+      <div class="tile-label">Calories</div>
+    </div>
+
+    <div class="health-tile tile-purple">
+      <button class="tile-close" aria-label="Remove">×</button>
+      <div class="tile-value">21.4 hrs</div>
+      <div class="tile-label">Sleep</div>
+    </div>
+  </div>
+</div>
+
+          
         </div>
 
       </div>
@@ -1138,7 +1367,7 @@ HealthTech        </a>
   
 
  <!-- ==================== AUDIENCE ==================== -->
-  <section id="features">
+  <section id="audience">
     <div class="container">
       <div class="section-header">
         <div class="section-label">Audience</div>
@@ -1151,17 +1380,17 @@ HealthTech        </a>
       <div class="triangle">
 
         <div class="triangle-item top">
-          <h3>13yr and Above</h3>
-          <p>Suitable and accessible for users aged 13 and above looking to build healthy habits early.</p>
+          <h3>👥 Teenagers to Senior Citizens</h3>
+          <p>User-friendly and designed for individuals aged 13 and above to build healthy habits early.</p>
         </div>
 
         <div class="triangle-item left">
-          <h3>Health-Conscious Users</h3>
+          <h3>🏃‍♂️ Health-Conscious Users</h3>
           <p>Individuals who actively monitor their fitness, diet, and overall wellbeing.</p>
         </div>
 
         <div class="triangle-item right">
-          <h3>Tech-Savvy Individuals</h3>
+          <h3>💻 Tech-Savvy Individuals</h3>
           <p>Users who prefer digital platforms for tracking and visualising health data.</p>
         </div>
 
@@ -1180,16 +1409,16 @@ HealthTech        </a>
           <div class="stat-label">Active Users</div>
         </div>
         <div class="reveal reveal-delay-1">
-          <div class="stat-num" data-count="1000000" data-suffix="M+">0</div>
+          <div class="stat-num" data-count="1000000" data-suffix="">0</div>
           <div class="stat-label">Workouts Logged</div>
         </div>
         <div class="reveal reveal-delay-2">
-          <div class="stat-num" data-count="49" data-suffix="" data-decimal="1">0</div>
-          <div class="stat-label">App Store Rating</div>
+          <div class="stat-num" data-count="12" data-suffix="">0</div>
+          <div class="stat-label">Different Health Metrics</div>
         </div>
         <div class="reveal reveal-delay-3">
-          <div class="stat-num" data-count="97" data-suffix="%">0</div>
-          <div class="stat-label">Satisfaction Rate</div>
+          <div class="stat-num" data-count="100" data-suffix="%">0</div>
+          <div class="stat-label">Trustability</div>
         </div>
       </div>
     </div>
@@ -1208,15 +1437,26 @@ HealthTech        </a>
 
         <!-- 1: Chat System -->
         <div class="feature-card reveal">
-          <span class="feature-card-badge"><span class="badge">Community</span></span>
-          <div class="feature-icon-wrap" style="background:rgba(16,185,129,.1);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-            </svg>
-          </div>
-          <h3 class="feature-title">Integrated Chat System</h3>
-          <p class="feature-desc">Connect directly with admins, fellow users, and certified doctors — all in one secure, HIPAA-aware messaging hub.</p>
-        </div>
+  <span class="feature-card-badge"><span class="badge">Community</span></span>
+
+  <div class="feature-icon-wrap" style="background:rgba(16,185,129,.1);">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+    </svg>
+  </div>
+
+  <h3 class="feature-title">Integrated Chat System</h3>
+  <p class="feature-desc">
+    Connect directly with admins, fellow users, and certified doctors — all in one secure, HIPAA-aware messaging hub.
+  </p>
+
+  <button class="chat-preview-toggle" type="button" aria-expanded="false">
+    View chat preview
+    <span class="toggle-arrow">⌄</span>
+  </button>
+
+ 
+</div>
 
         <!-- 2: Patient Search -->
         <div class="feature-card reveal reveal-delay-1">
@@ -1228,6 +1468,7 @@ HealthTech        </a>
           </div>
           <h3 class="feature-title">Doctor Patient Search</h3>
           <p class="feature-desc">Doctors can instantly search and access their patients' complete health records, history, and real-time biometric data.</p>
+          
         </div>
 
         <!-- 3: Biometrics -->
@@ -1240,6 +1481,7 @@ HealthTech        </a>
           </div>
           <h3 class="feature-title">Advanced Biometrics</h3>
           <p class="feature-desc">Monitor blood glucose, water intake, blood pressure, oxygen levels, and more — all from a single unified dashboard.</p>
+          
         </div>
 
         <!-- 4: Dark/Light Mode -->
@@ -1277,18 +1519,40 @@ HealthTech        </a>
     allowing users to personalise their experience for day or night usage.
   </p>
 
+
+
 </div>
 
         <!-- 5: Health Goals -->
-        <div class="feature-card reveal reveal-delay-2">
-          <div class="feature-icon-wrap" style="background:rgba(16,185,129,.1);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle>
-            </svg>
-          </div>
-          <h3 class="feature-title">Smart Health Goals</h3>
-          <p class="feature-desc">Set personalized wellness targets for fitness, sleep, hydration, or nutrition. Track progress in real-time with milestone celebrations.</p>
-        </div>
+        <!-- 5: Health Goals -->
+<div class="feature-card reveal reveal-delay-2">
+
+  <!-- Badge (TOP RIGHT) -->
+  <span class="feature-card-badge">
+    <span class="badge" style="background:rgba(16,185,129,.1); color:var(--primary); border-color:rgba(16,185,129,.2);">
+      Motivational
+    </span>
+  </span>
+
+  <!-- Icon -->
+  <div class="feature-icon-wrap" style="background:rgba(16,185,129,.1);">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"></circle>
+      <circle cx="12" cy="12" r="6"></circle>
+      <circle cx="12" cy="12" r="2"></circle>
+    </svg>
+  </div>
+
+  <!-- Title -->
+  <h3 class="feature-title">Smart Health Goals</h3>
+
+  <!-- Description -->
+  <p class="feature-desc">
+    Set personalized wellness targets for fitness, sleep, hydration, or nutrition. 
+    Track progress in real-time with milestone celebrations.
+  </p>
+
+</div>
 
         <!-- 6: AI Chatbot -->
         <div class="feature-card reveal reveal-delay-3">
@@ -1300,6 +1564,7 @@ HealthTech        </a>
           </div>
           <h3 class="feature-title">AI Health Chatbot</h3>
           <p class="feature-desc">Your 24/7 personal health assistant. Ask anything from symptom checks to nutrition advice — powered by cutting-edge AI.</p>
+           
         </div>
 
          <!-- 7: Device Integration -->
@@ -1331,7 +1596,7 @@ HealthTech        </a>
     in one unified dashboard.
   </p>
 
- 
+
 
 </div>
 
@@ -1344,7 +1609,7 @@ HealthTech        </a>
     <div class="container">
       <div class="section-header">
         <div class="section-label">How It Works</div>
-        <h2 class="section-title">Up and running in minutes</h2>
+        <h2 class="section-title">Up and Running in Minutes</h2>
         <p class="section-subtitle">Three simple steps to transform your daily routine into lifelong healthy habits.</p>
       </div>
 
@@ -1370,191 +1635,8 @@ HealthTech        </a>
     </div>
   </section>
 
-  <!-- ==================== TESTIMONIALS ==================== -->
-  <section id="testimonials">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label">Testimonials</div>
-        <h2 class="section-title">Loved by thousands</h2>
-        <p class="section-subtitle">Don't just take our word for it. Here's what our community has to say.</p>
-      </div>
 
-      <div class="testimonials-grid">
-
-        <div class="testimonial-card reveal">
-          <div class="stars">
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-          </div>
-          <p class="testimonial-quote">"VitalTrack completely changed how I train. The AI chatbot even helped me understand my glucose spikes after workouts. Incredible app."</p>
-          <div class="testimonial-author">
-            <img src="./Health App_files/photo-1438761681033-6461ffad8d80" alt="Sarah Jenkins" class="testimonial-avatar">
-            <div>
-              <div class="testimonial-name">Sarah Jenkins</div>
-              <div class="testimonial-role">Marathon Runner</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonial-card reveal reveal-delay-2">
-          <div class="stars">
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-          </div>
-          <p class="testimonial-quote">"The doctor chat feature is a game changer. I messaged my physician directly through the app and got results reviewed same day."</p>
-          <div class="testimonial-author">
-            <img src="./Health App_files/photo-1472099645785-5658abf4ff4e" alt="Michael Chen" class="testimonial-avatar">
-            <div>
-              <div class="testimonial-name">Michael Chen</div>
-              <div class="testimonial-role">Busy Professional</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonial-card reveal reveal-delay-4">
-          <div class="stars">
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-          </div>
-          <p class="testimonial-quote">"I recommend this to all my students. The holistic approach to sleep, activity, and mindfulness is unmatched. Dark mode is perfect for evening use."</p>
-          <div class="testimonial-author">
-            <img src="./Health App_files/photo-1534528741775-53994a69daeb" alt="Emma Roberts" class="testimonial-avatar">
-            <div>
-              <div class="testimonial-name">Emma Roberts</div>
-              <div class="testimonial-role">Yoga Instructor</div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== PRICING ==================== -->
-  <section id="pricing">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label">Pricing</div>
-        <h2 class="section-title">Simple, transparent pricing</h2>
-        <p class="section-subtitle">Start for free, upgrade when you need more power.</p>
-      </div>
-
-      <div class="pricing-grid">
-
-        <!-- Basic -->
-        <div class="pricing-card reveal">
-          <div class="pricing-name">Basic</div>
-          <div class="pricing-price">$0 <span>/mo</span></div>
-          <div class="pricing-desc">Essential tracking to get your journey started.</div>
-          <div class="pricing-divider"></div>
-          <div class="pricing-features">
-            <div class="pricing-feature">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              Basic biometric tracking
-            </div>
-            <div class="pricing-feature">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              Water &amp; glucose logging
-            </div>
-            <div class="pricing-feature">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              Community chat access
-            </div>
-            <div class="pricing-feature">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              Health goal setting
-            </div>
-            <div class="pricing-feature">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              Light &amp; dark mode
-            </div>
-          </div>
-          <a href="#" class="btn btn-outline pricing-btn">Get Started Free</a>
-        </div>
-
-        <!-- Pro (Popular) -->
-        <div class="pricing-card popular reveal reveal-delay-2">
-          <div class="popular-label">Most Popular</div>
-          <div class="pricing-name">Pro</div>
-          <div class="pricing-price">$9.99 <span>/mo</span></div>
-          <div class="pricing-desc">Advanced analytics for serious health optimizers.</div>
-          <div class="pricing-divider"></div>
-          <div class="pricing-features">
-            <div class="pricing-feature">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              Everything in Basic
-            </div>
-            <div class="pricing-feature">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              AI health chatbot (unlimited)
-            </div>
-            <div class="pricing-feature">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              Doctor-patient messaging
-            </div>
-            <div class="pricing-feature">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              Advanced biometric analytics
-            </div>
-            <div class="pricing-feature">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              Doctor patient search
-            </div>
-            <div class="pricing-feature">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              Priority support
-            </div>
-          </div>
-          <a href="#" class="btn btn-white pricing-btn">Start 14-Day Free Trial</a>
-        </div>
-
-        <!-- Elite -->
-        <div class="pricing-card reveal reveal-delay-4">
-          <div class="pricing-name">Elite</div>
-          <div class="pricing-price">$19.99 <span>/mo</span></div>
-          <div class="pricing-desc">Personalized coaching and deep integrations.</div>
-          <div class="pricing-divider"></div>
-          <div class="pricing-features">
-            <div class="pricing-feature">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              Everything in Pro
-            </div>
-            <div class="pricing-feature">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              Dedicated doctor concierge
-            </div>
-            <div class="pricing-feature">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              Full admin chat access
-            </div>
-            <div class="pricing-feature">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              Custom biometric thresholds
-            </div>
-            <div class="pricing-feature">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              Wearable device sync
-            </div>
-            <div class="pricing-feature">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              24/7 dedicated support
-            </div>
-          </div>
-          <a href="#" class="btn btn-outline pricing-btn">Upgrade to Elite</a>
-        </div>
-
-      </div>
-    </div>
-  </section>
+  
 
   <!-- ==================== CTA BANNER ==================== -->
   <section id="cta">
@@ -1562,10 +1644,13 @@ HealthTech        </a>
     <div class="cta-blob cta-blob-2"></div>
     <div class="container cta-inner">
       <h2 class="cta-title reveal">Ready to Start Your Health Journey?</h2>
-      <p class="cta-desc reveal reveal-delay-1">Join over 50,000 people already using VitalTrack to live healthier, happier lives. It's free to start.</p>
+      <p class="cta-desc reveal reveal-delay-1">
+  Start your healthy lifestyle today using HealthTech.<br>
+  Your health, Our priority.
+</p>
       <div class="reveal reveal-delay-2" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-        <a href="#pricing" class="btn btn-white btn-lg">Get Started Free</a>
-        <a href="#features" class="btn btn-lg" style="background:rgba(255,255,255,.15);color:#fff;border:1.5px solid rgba(255,255,255,.4);">Learn More</a>
+       
+        
       </div>
     </div>
   </section>
@@ -1691,20 +1776,26 @@ HealthTech        </a>
     const hamburger = document.getElementById('hamburger');
     const mobileNav = document.getElementById('mobile-nav');
 
-    hamburger.addEventListener('click', () => {
-      mobileNav.classList.contains('open') ? closeMobileNav() : openMobileNav();
-    });
+   if (hamburger && mobileNav) {
+  hamburger.addEventListener('click', () => {
+    mobileNav.classList.contains('open') ? closeMobileNav() : openMobileNav();
+  });
+}
 
     function openMobileNav() {
-      mobileNav.classList.add('open');
-      hamburger.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeMobileNav() {
-      mobileNav.classList.remove('open');
-      hamburger.classList.remove('open');
-      document.body.style.overflow = '';
-    }
+  if (!mobileNav) return;
+  mobileNav.classList.add('open');
+  if (hamburger) hamburger.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMobileNav() {
+  if (!mobileNav) return;
+  mobileNav.classList.remove('open');
+  if (hamburger) hamburger.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
 
     document.querySelectorAll('.mobile-link').forEach(l =>
       l.addEventListener('click', closeMobileNav)
@@ -1894,5 +1985,18 @@ HealthTech        </a>
     window.addEventListener('load',   () => setTimeout(drawSparkline, 50));
     window.addEventListener('resize', drawSparkline, { passive: true });
 
+     const chatToggle = document.querySelector('.chat-preview-toggle');
+  const chatPreview = document.querySelector('.feature-image');
+
+  if (chatToggle && chatPreview) {
+    chatToggle.addEventListener('click', () => {
+      const isOpen = chatPreview.classList.toggle('open');
+      chatToggle.classList.toggle('active', isOpen);
+      chatToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
   </script>
+
+ 
+
 </body></html>
