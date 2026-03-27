@@ -562,14 +562,17 @@
 }
 
 .triangle {
-  position: relative;
-  width: 700px;
-  height: 400px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 in a row */
+  gap: 24px;
+  max-width: 900px;
+  width: 100%;
 }
 
+/* REMOVE absolute positioning */
 .triangle-item {
-  position: absolute;
-  width: 250px;
+  position: static; /* ✅ important */
+  width: 100%;
   padding: 22px;
   border-radius: 16px;
   background: #ffffff;
@@ -579,29 +582,6 @@
 
 .triangle-item:hover {
   transform: translateY(-8px) scale(1.02);
-}
-
-.triangle-item.top:hover {
-  transform: translateX(-50%) translateY(-8px) scale(1.02);
-}
-
-/* TOP */
-.triangle-item.top {
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-/* LEFT */
-.triangle-item.left {
-  bottom: 0;
-  left: 0;
-}
-
-/* RIGHT */
-.triangle-item.right {
-  bottom: 0;
-  right: 0;
 }
 
 /* TEXT */
@@ -620,15 +600,15 @@
        STATS BAR
     ===================== */
     #stats {
-      padding: 3rem 0;
+      padding: 3rem 3tre;
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
       background: var(--bg-card);
     }
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
       text-align: center;
     }
     .stat-num {
@@ -1405,21 +1385,20 @@ HealthTech        </a>
     <div class="container">
       <div class="stats-grid">
         <div class="reveal">
-          <div class="stat-num" data-count="50000" data-suffix="K+">0</div>
-          <div class="stat-label">Active Users</div>
+          <div class="stat-num" data-count="10" data-suffix="+">0</div>
+          <div class="stat-label">Different Features</div>
         </div>
-        <div class="reveal reveal-delay-1">
-          <div class="stat-num" data-count="1000000" data-suffix="">0</div>
-          <div class="stat-label">Workouts Logged</div>
-        </div>
-        <div class="reveal reveal-delay-2">
-          <div class="stat-num" data-count="12" data-suffix="">0</div>
-          <div class="stat-label">Different Health Metrics</div>
-        </div>
+      
         <div class="reveal reveal-delay-3">
           <div class="stat-num" data-count="100" data-suffix="%">0</div>
           <div class="stat-label">Trustability</div>
         </div>
+        
+        <div class="reveal reveal-delay-2">
+          <div class="stat-num" data-count="12" data-suffix="">0</div>
+          <div class="stat-label">Different Health Metrics</div>
+        </div>
+        
       </div>
     </div>
   </section>
